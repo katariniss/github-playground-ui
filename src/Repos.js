@@ -30,14 +30,19 @@ function Repos() {
 
   useEffect(() => {
     memoizedLoadRepos(orgName)
-  }, )
+  }, [])
 
   return (
     <>
       <input
         type="text"
-        defaultValue={orgNameFromUrl}
+        value={orgName}
         onChange={(e) => handleOrgNameChange(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Escape') {
+            handleOrgNameChange('');
+          }
+        }}
       />
       {
         lastRequestFailed && (
