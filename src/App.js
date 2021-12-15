@@ -6,21 +6,20 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  Navigate,
 } from "react-router-dom";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-
         <header className="App-header">
-
           <Routes>
             <Route path="repos" element={<Repos />} />
             <Route path="repos/:orgName" element={<Repos />} />
             <Route path="repos/:orgName/:repoName" element={<Repo />} />
+            <Route path="/" element={<Navigate replace to="/repos" />} />
           </Routes>
-
           <a
             className="App-link"
             href="https://reactjs.org"
@@ -30,8 +29,6 @@ function App() {
             Learn React
           </a>
         </header>
-
-
       </div>
     </BrowserRouter >
   );
