@@ -15,6 +15,10 @@ function Repos() {
 
   const memoizedLoadRepos = useCallback(
     debounce(orgNameToLoad => {
+      if(!orgNameToLoad) {
+        return;
+      }
+      
       setLastRequestFailed(false);
       axios.get(`https://api.github.com/orgs/${orgNameToLoad}/repos`)
         .then(({ data }) => {
